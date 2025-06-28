@@ -52,7 +52,7 @@ docker-compose up --build -d
 - **Contraseña:** `claveultrasecreta`
 - **Base de datos:** `diagnomind`
 
-Una vez dentro de Adminer, puedes importar el archivo `sistema_experto.sql` para cargar la estructura y datos de la base de datos.
+Una vez dentro de Adminer, puedes importar el archivo `diagnomind(db_exportada).sql` para cargar la estructura y datos de la base de datos.
 
 ---
 
