@@ -98,6 +98,7 @@ function cargarFormularioHistorialAutoevaluaciones() {
             success: function(response) {
                 if (response.flag == 1) {
                     $("#contenido-dinamico").html(response.formularioHTML);
+                    window.HistorialAutoevaluacionesPagination.init();
                     guardarContenidoEnLocalStorage(response.formularioHTML, "historialAutoevaluaciones");
                 }
             },

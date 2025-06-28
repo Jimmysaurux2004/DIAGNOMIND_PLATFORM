@@ -1,0 +1,467 @@
+/* === ESTILOS ACTUALIZADOS === */
+
+.sp-container {
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fbfc;
+}
+
+.sp-titulo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1E3A5F;
+  margin-bottom: 30px;
+}
+
+.sp-alerta-pacientes {
+  background-color: #e8f1fb;
+  color: #1E3A5F;
+  padding: 16px 20px;
+  border-left: 6px solid #2C4A76;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.sp-lista-pacientes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sp-card-paciente {
+  background: #ffffff;
+  border-left: 6px solid transparent;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.25s ease;
+}
+
+.sp-card-paciente:hover {
+  border-left: 6px solid #1E3A5F;
+  transform: scale(1.01);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sp-nombre {
+  color: #1E3A5F;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.sp-btn-detalle {
+  background-color: #1E3A5F;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.sp-btn-detalle:hover {
+  background-color: #274d7b;
+}
+
+/* === MODALES === */
+.sp-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.sp-modal-contenido {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 30px 20px;
+  max-width: 900px;
+  width: 95%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.4s ease;
+}
+
+.sp-cerrar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 1.8rem;
+  color: #981E25;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.sp-cerrar:hover {
+  transform: scale(1.2);
+}
+
+.sp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.sp-modal-titulo {
+  font-size: 1.8rem;
+  color: #1E3A5F;
+}
+
+.sp-meta-info {
+  font-size: 1rem;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.sp-fijo {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding-bottom: 10px;
+  z-index: 10;
+}
+
+.sp-subtitulo-sintomas {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1E3A5F;
+  margin-bottom: 10px;
+}
+
+.sp-scroll-area {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.sp-lista-sintomas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sp-lista-sintomas li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #f4f6f8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.sp-s { color: #27ae60; font-weight: bold; }
+.sp-n { color: #c0392b; font-weight: bold; }
+
+/* === TABLA INTENTOS === */
+.sp-tabla-wrapper {
+  overflow-x: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.sp-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.sp-tabla thead {
+  background-color: #1E3A5F;
+  color: white;
+}
+
+.sp-tabla th, .sp-tabla td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e6ed;
+}
+
+.sp-tabla tbody tr:nth-child(even) {
+  background-color: #f4f8fb;
+}
+
+.sp-tabla tbody tr:hover {
+  background-color: #eaf1f7;
+}
+
+.sp-tabla button {
+  background-color: #2C4A76;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.sp-tabla button:hover {
+  background-color: #3b5c95;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* === SCROLL PERSONALIZADO === */
+.sp-scroll-area::-webkit-scrollbar,
+.sp-tabla-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+.sp-scroll-area::-webkit-scrollbar-thumb,
+.sp-tabla-wrapper::-webkit-scrollbar-thumb {
+  background-color: #2C4A76;
+  border-radius: 4px;
+}
+.sp-scroll-area::-webkit-scrollbar-track,
+.sp-tabla-wrapper::-webkit-scrollbar-track {
+  background-color: #e4eaf0;
+}
+
+/**/
+/* ...otros estilos ya definidos arriba... */
+
+.sp-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.sp-modal-contenido {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 850px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease;
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sp-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 1.6rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+.sp-cerrar:hover {
+  color: #E74C3C;
+}
+
+.sp-modal-titulo {
+  font-size: 1.6rem;
+  color: #1E3A5F;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sp-datos-paciente {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #34495E;
+}
+
+.sp-tabla-wrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #d0d8e2;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.sp-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.sp-tabla thead {
+  position: sticky;
+  top: 0;
+  background-color: #1E3A5F;
+  color: white;
+  z-index: 5;
+}
+
+.sp-tabla th, .sp-tabla td {
+  padding: 12px;
+  border-bottom: 1px solid #e0e6ed;
+  font-size: 0.95rem;
+  color: #1E3A5F;
+}
+
+.sp-tabla tbody tr:nth-child(even) {
+  background-color: #f4f8fb;
+}
+
+.sp-tabla tbody tr:hover {
+  background-color: #eaf1f7;
+}
+
+.sp-tabla button {
+  background-color: #2C4A76;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.sp-tabla button:hover {
+  background-color: #3b5c95;
+}
+
+/* Modal de síntomas */
+.sp-meta-info {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 10px 0;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
+}
+
+.sp-sintomas-wrapper {
+  overflow-y: auto;
+  max-height: 50vh;
+  padding-top: 10px;
+}
+
+.sp-subtitulo-sintomas {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #1E3A5F;
+  font-weight: bold;
+}
+
+.sp-lista-sintomas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sp-lista-sintomas li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #F4F6F8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sp-si::before {
+  content: \"✔️\";
+  color: #27AE60;
+  margin-right: 10px;
+}
+.sp-no::before {
+  content: \"❌\";
+  color: #C0392B;
+  margin-right: 10px;
+}
+
+.sp-modal {
+  z-index: 9999; /* Estaba en 1000, ahora lo superamos todo */
+}
+
+.sp-modal-contenido {
+  z-index: 10000; /* También aseguramos el contenido por encima */
+}
+
+.sp-tabla thead th {
+  color: white !important; /* Forzamos visibilidad */
+}
+
+.sp-divisor {
+  height: 1px;
+  background-color: #D0D8E2; /* mismo tono del sistema */
+  margin: 15px 0;
+}
+
+.sp-si {
+  color: #1d7745;
+  font-size: 1.2rem;
+}
+
+.sp-no {
+  color: #a72020;
+  font-size: 1.2rem;
+}
+
+
+.sp-lista-sintomas li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/**/
+.sp-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Garantiza ancho fijo por columna */
+}
+
+.sp-tabla th,
+.sp-tabla td {
+  padding: 12px 14px;
+  text-align: center; /* ← CENTRADO para alineación uniforme */
+  border-bottom: 1px solid #e0e6ed;
+  font-size: 0.95rem;
+  color: #1E3A5F;
+  word-wrap: break-word;
+}
+
+.sp-tabla th {
+  background-color: #1E3A5F;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.sp-tabla td:last-child,
+.sp-tabla th:last-child {
+  text-align: center;
+}
+
+.sp-tabla thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

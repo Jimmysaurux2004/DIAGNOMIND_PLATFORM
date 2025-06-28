@@ -1,127 +1,247 @@
-:root {
-  --ha-color-primario: #1E3A5F;
-  --ha-color-secundario: #2F4E6F;
-  --ha-color-acento: #5599C9;
-  --ha-color-texto: #212529;
-  --ha-color-fondo: #F4F6F9;
-  --ha-color-borde: #DDE2E8;
-  --ha-color-hover: #E6EDF4;
-}
-
-/* Contenedor general */
+/* === CONTENEDOR GENERAL === */
 .ha-container {
-  background-color: var(--ha-color-fondo);
+  background-color: #ffffff;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.05);
-  animation: fadeIn 0.5s ease-in;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Título */
+/* === TÍTULO SECCIÓN === */
 .ha-titulo {
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--ha-color-primario);
-  border-color: var(--ha-color-acento);
+  color: #1E3A5F;
+  border-bottom: 2px solid #5599C9;
+  padding-bottom: 0.5rem;
 }
 
-/* Controles */
-.ha-controles label, .ha-controles span {
-  color: var(--ha-color-texto);
+/* === CONTROLES === */
+.ha-controles {
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ha-controles label,
+.ha-controles span {
+  color: #34495E;
+  font-size: 0.95rem;
 }
 
 .ha-controles select {
-  border-color: var(--ha-color-borde);
+  min-width: 72px;
+  padding-right: 1.5rem;
   background-color: #fff;
+  border: 1px solid #DDE2E8;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path fill="%23444" d="M0 0l5 6 5-6z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-size: 10px 6px;
 }
 
 .ha-controles select:focus {
-  border-color: var(--ha-color-acento);
+  border-color: #5599C9;
   box-shadow: 0 0 0 0.2rem rgba(85, 153, 201, 0.25);
+  outline: none;
+}
+
+#ha-pagina-anterior,
+#ha-pagina-siguiente {
+  font-size: 0.95rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  transition: background-color 0.2s ease;
 }
 
 #ha-pagina-anterior:hover,
 #ha-pagina-siguiente:hover {
-  background-color: var(--ha-color-hover);
+  background-color: #E6EDF4;
 }
 
-/* Tabla */
-#ha-tabla-autoevaluaciones th {
-  background-color: var(--ha-color-primario);
-  color: white;
-}
-
-#ha-tabla-autoevaluaciones tbody tr:hover {
-  background-color: var(--ha-color-hover);
-}
-
-/* Botón ver */
-.ha-ver-detalles {
-  background-color: var(--ha-color-acento);
-  border: none;
-}
-
-.ha-ver-detalles:hover {
-  background-color: var(--ha-color-secundario);
-}
-
-/* MODAL PERSONALIZADO */
-.ha-modal .modal-header {
-  background-color: var(--ha-color-primario);
-  color: white;
-  padding: 1rem 1.5rem;
-}
-
-.ha-modal .modal-title {
-  font-weight: 600;
-}
-
-#ha-modal-cerrar {
-  filter: invert(1);
-}
-
-.ha-modal .modal-body {
-  background-color: #f9fbfd;
-  color: var(--ha-color-texto);
-  padding: 2rem;
+/* === TABLA === */
+#ha-tabla-autoevaluaciones {
   font-size: 0.95rem;
 }
 
-.ha-modal .ha-modal-linea {
-  margin-bottom: 0.75rem;
-}
-
-.ha-modal .ha-modal-label {
+#ha-tabla-autoevaluaciones th {
+  background-color: #1E3A5F;
+  color: white;
   font-weight: 600;
-  color: var(--ha-color-primario);
-  margin-right: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
 }
 
-.ha-modal .ha-modal-subtitulo {
-  color: var(--ha-color-primario);
+#ha-tabla-autoevaluaciones td {
+  vertical-align: middle;
+  color: #2F4E6F;
+}
+
+#ha-tabla-autoevaluaciones tbody tr:hover {
+  background-color: #f4f7fa;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#ha-tabla-autoevaluaciones td.text-primary {
+  color: #1E3A5F !important;
   font-weight: 600;
-  margin-top: 1rem;
+  letter-spacing: 0.3px;
 }
 
-.ha-modal .ha-modal-lista {
-  padding-left: 1.2rem;
-  list-style: none;
+#ha-tabla-autoevaluaciones .text-muted {
+  color: #999 !important;
+  font-style: italic;
 }
 
-.ha-modal .ha-modal-lista li {
-  margin-bottom: 0.5rem;
+/* === BOTÓN DETALLES === */
+.ha-ver-detalles {
+  background-color: #5599C9;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.ha-ver-detalles:hover {
+  background-color: #2F4E6F;
+  cursor: pointer;
+}
+
+.ha-ver-detalles i {
+  font-size: 0.9rem;
+}
+
+/* === MODAL === */
+.ha-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.ha-modal-contenido {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 850px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease;
   position: relative;
-  padding-left: 1.2rem;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.ha-modal .ha-modal-lista li::before {
-  content: '•';
+.ha-modal-cerrar {
   position: absolute;
-  left: 0;
-  color: var(--ha-color-primario);
+  top: 12px;
+  right: 20px;
+  font-size: 1.6rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
 }
 
-/* Animaciones */
+.ha-modal-cerrar:hover {
+  color: #E74C3C;
+}
+
+.ha-modal-titulo {
+  font-size: 1.6rem;
+  color: #1E3A5F;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.ha-modal-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.ha-modal-info {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #34495E;
+}
+
+.ha-modal-info p {
+  margin: 4px 0;
+}
+
+.ha-divisor {
+  height: 1px;
+  background-color: #D0D8E2;
+  margin: 12px 0;
+  opacity: 0.7;
+}
+
+/* === SÍNTOMAS === */
+.ha-modal-sintomas {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.ha-lista-sintomas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ha-lista-sintomas li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #F4F6F8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ha-si {
+  color: #27AE60;
+  font-size: 1.2rem;
+}
+
+.ha-no {
+  color: #C0392B;
+  font-size: 1.2rem;
+}
+
+.ha-modal-sintomas::-webkit-scrollbar {
+  width: 6px;
+}
+.ha-modal-sintomas::-webkit-scrollbar-thumb {
+  background-color: #2C4A76;
+  border-radius: 4px;
+}
+.ha-modal-sintomas::-webkit-scrollbar-track {
+  background-color: #e4eaf0;
+}
+
+/* === ANIMACIONES === */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }

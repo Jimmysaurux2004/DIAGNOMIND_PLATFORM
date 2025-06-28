@@ -30,4 +30,62 @@ class Paciente {
         return $id;
     }
 
+    public function obtenerTodosLosIdDePacientes(): array {
+        $conexion = Conexion::conectarBD();
+        if (!$conexion) return [];
+
+        $sql = 'SELECT id FROM pacientes;';
+        $stmt = $conexion->prepare($sql);
+        if (!$stmt) {
+            Conexion::desconectarBD();
+            return [];
+        }
+
+        if (!$stmt->execute()) {
+            $stmt->close();
+            Conexion::desconectarBD();
+            return [];
+        }
+
+        $result = $stmt->get_result();
+        $ids = [];
+
+        while ($fila = $result->fetch_assoc()) {
+            $ids[] = (int)$fila['id'];
+        }
+
+        $stmt->close();
+        Conexion::desconectarBD();
+
+        return $ids;
+    }
+
+    public function obtenerDatosPacientePorId(int $idPaciente): ?array {
+        $conexion = Conexion::conectarBD();
+        if (!$conexion) return null;
+
+        $sql = 'SELECT * FROM pacientes WHERE id = ? LIMIT 1;';
+        $stmt = $conexion->prepare($sql);
+        if (!$stmt) {
+            Conexion::desconectarBD();
+            return null;
+        }
+
+        $stmt->bind_param("i", $idPaciente);
+
+        if (!$stmt->execute()) {
+            $stmt->close();
+            Conexion::desconectarBD();
+            return null;
+        }
+
+        $resultado = $stmt->get_result();
+        $datos = $resultado->fetch_assoc();
+
+        $stmt->close();
+        Conexion::desconectarBD();
+
+        return $datos ?: null;
+    }
+
 }

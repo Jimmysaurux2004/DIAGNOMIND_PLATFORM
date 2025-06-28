@@ -48,33 +48,131 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Botón Ver Detalles
-document.body.addEventListener("click", (e) => {
-  const btn = e.target.closest(".ha-ver-detalles");
-  if (!btn) return;
+document.querySelectorAll(".ha-ver-detalles").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const fecha = btn.getAttribute("data-fecha");
+    const hora = btn.getAttribute("data-hora");
+    const diagnostico = btn.getAttribute("data-diagnostico");
+    const sintomas = JSON.parse(btn.getAttribute("data-sintomas"));
 
-  document.getElementById("ha-modal-fecha").textContent = btn.dataset.fecha;
-  document.getElementById("ha-modal-hora").textContent = btn.dataset.hora;
-  document.getElementById("ha-modal-diagnostico").textContent = btn.dataset.diagnostico;
+    document.getElementById("ha-modal-fecha").textContent = fecha;
+    document.getElementById("ha-modal-hora").textContent = hora;
+    document.getElementById("ha-modal-diagnostico").textContent = diagnostico;
 
-  const lista = document.getElementById("ha-modal-lista-sintomas");
-  lista.innerHTML = "";
+    const ul = document.getElementById("ha-modal-lista-sintomas");
+    ul.innerHTML = "";
 
-  const sintomas = JSON.parse(btn.dataset.sintomas);
-  sintomas.forEach((s) => {
-    const li = document.createElement("li");
-    li.textContent = `${s.respuesta === "S" ? "✅" : "❌"} ${s.descripcion}`;
-    lista.appendChild(li);
+    sintomas.forEach(s => {
+      const esSi = s.respuesta.toUpperCase() === "S";
+      const icono = esSi
+        ? '<i class="fas fa-circle-check ha-si"></i>'
+        : '<i class="fas fa-circle-xmark ha-no"></i>';
+
+      const li = document.createElement("li");
+      li.innerHTML = `${s.descripcion}: ${icono}`;
+      ul.appendChild(li);
+    });
+
+    document.getElementById("ha-modal-detalle-autoevaluacion").style.display = "flex";
   });
-
-  const modal = new bootstrap.Modal(document.getElementById("ha-modal-historial"));
-  modal.show();
 });
 
-// Botón cerrar modal
-document.body.addEventListener("click", (e) => {
-  if (e.target.id === "ha-modal-cerrar" || e.target.closest("#ha-modal-cerrar")) {
-    const modalEl = document.getElementById("ha-modal-historial");
-    const instance = bootstrap.Modal.getInstance(modalEl);
-    if (instance) instance.hide();
-  }
+document.getElementById("ha-modal-cerrar").addEventListener("click", () => {
+  document.getElementById("ha-modal-detalle-autoevaluacion").style.display = "none";
 });
+
+
+/** */
+window.HistorialAutoevaluacionesPagination = (function () {
+    let currentPage = 1;
+    let rowsPerPage = 10;
+
+    const storageKey = "haRowsPerPage";
+    const tableId = "ha-tabla-autoevaluaciones";
+    const selectId = "ha-items-por-pagina";
+    const infoId = "ha-total-registros";
+    const btnPrevId = "ha-pagina-anterior";
+    const btnNextId = "ha-pagina-siguiente";
+
+    const loadSavedConfig = () => {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) rowsPerPage = parseInt(saved, 10);
+    };
+
+    const saveConfig = () => {
+        localStorage.setItem(storageKey, rowsPerPage);
+    };
+
+    const updatePagination = () => {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+
+        const rows = table.querySelectorAll("tbody tr");
+        const totalRows = rows.length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        rows.forEach((row, index) => {
+            const show = index >= (currentPage - 1) * rowsPerPage && index < currentPage * rowsPerPage;
+            row.style.display = show ? "" : "none";
+        });
+
+        const info = document.getElementById(infoId);
+        if (info) {
+            info.innerText = totalRows > 0
+                ? `de ${totalRows} registros`
+                : "de 0 registros";
+        }
+
+        const btnPrev = document.getElementById(btnPrevId);
+        const btnNext = document.getElementById(btnNextId);
+        if (btnPrev) btnPrev.disabled = currentPage === 1;
+        if (btnNext) btnNext.disabled = currentPage >= totalPages || totalPages === 0;
+    };
+
+    const init = () => {
+        loadSavedConfig();
+
+        const select = document.getElementById(selectId);
+        if (select) {
+            select.value = rowsPerPage;
+            select.addEventListener("change", function () {
+                rowsPerPage = parseInt(this.value, 10);
+                currentPage = 1;
+                saveConfig();
+                updatePagination();
+            });
+        }
+
+        const btnPrev = document.getElementById(btnPrevId);
+        const btnNext = document.getElementById(btnNextId);
+
+        if (btnPrev) {
+            btnPrev.addEventListener("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePagination();
+                }
+            });
+        }
+
+        if (btnNext) {
+            btnNext.addEventListener("click", () => {
+                const table = document.getElementById(tableId);
+                const totalRows = table.querySelectorAll("tbody tr").length;
+                const totalPages = Math.ceil(totalRows / rowsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePagination();
+                }
+            });
+        }
+
+        updatePagination();
+    };
+
+    return {
+        init
+    };
+})();
+
+

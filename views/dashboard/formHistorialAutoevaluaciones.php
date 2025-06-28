@@ -31,7 +31,7 @@ class formHistorialAutoevaluaciones {
             <table class="table table-bordered table-hover" id="ha-tabla-autoevaluaciones">
                 <thead class="table-dark text-center">
                     <tr>
-                        <th>#</th>
+                        <th>Intento N°</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Diagnóstico</th>
@@ -40,14 +40,15 @@ class formHistorialAutoevaluaciones {
                 </thead>
                 <tbody>
                     <?php if (!empty($autoevaluaciones)): ?>
-                        <?php foreach ($autoevaluaciones as $index => $eval): ?>
+                        <?php foreach (array_reverse($autoevaluaciones) as $index => $eval): ?>
                             <tr>
-                                <td class="text-center"><?= $index + 1 ?></td>
+                                <td class="text-center"><?= count($autoevaluaciones) - $index ?></td>
                                 <td class="text-center"><?= $eval['fecha'] ?></td>
                                 <td class="text-center"><?= $eval['hora'] ?></td>
                                 <td class="text-center text-uppercase fw-bold text-primary"><?= $eval['resultado'] ?></td>
                                 <td class="text-center">
                                     <button class="btn btn-info btn-sm text-white ha-ver-detalles"
+                                            style="background-color: #37474F; border: none;"
                                             data-fecha="<?= $eval['fecha'] ?>"
                                             data-hora="<?= $eval['hora'] ?>"
                                             data-diagnostico="<?= $eval['resultado'] ?>"
@@ -64,27 +65,35 @@ class formHistorialAutoevaluaciones {
             </table>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="ha-modal-historial" tabindex="-1" aria-labelledby="ha-modalHistorialLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content ha-modal rounded-4 shadow">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ha-modalHistorialLabel">Detalle de Autoevaluación</h5>
-                        <button type="button" class="btn-close" id="ha-modal-cerrar" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="ha-modal-linea"><span class="ha-modal-label">📅 Fecha:</span> <span id="ha-modal-fecha"></span></div>
-                        <div class="ha-modal-linea"><span class="ha-modal-label">🕒 Hora:</span> <span id="ha-modal-hora"></span></div>
-                        <div class="ha-modal-linea"><span class="ha-modal-label">🧠 Diagnóstico:</span> <span id="ha-modal-diagnostico"></span></div>
-                        <hr/>
-                        <h6 class="ha-modal-subtitulo">Síntomas evaluados:</h6>
-                        <ul class="ha-modal-lista" id="ha-modal-lista-sintomas"></ul>
-                    </div>
-                </div>
+        <!-- Modal Moderno -->
+        <div class="ha-modal" id="ha-modal-detalle-autoevaluacion" style="display: none;">
+        <div class="ha-modal-contenido rounded-4 shadow">
+            <span class="ha-modal-cerrar" id="ha-modal-cerrar">&times;</span>
+
+            <div class="ha-modal-header">
+            <h4 class="ha-modal-titulo " style="font-weight: bold;">Detalle de Autoevaluación</h4>
+            </div>
+
+            <div class="ha-modal-info">
+            <div class="ha-divisor"></div> <!-- Línea arriba -->
+
+            <p><strong>📅 Fecha:</strong> <span id="ha-modal-fecha">---</span></p>
+            <p><strong>🕒 Hora:</strong> <span id="ha-modal-hora">---</span></p>
+            <p><strong>🧠 Diagnóstico:</strong> <span id="ha-modal-diagnostico">---</span></p>
+
+            <div class="ha-divisor"></div> <!-- Línea abajo -->
+            </div>
+
+            <div class="ha-modal-sintomas mb-2">
+            <h5 style="font-weight: bold;">Síntomas evaluados:</h5>
+            <ul id="ha-modal-lista-sintomas" class="ha-lista-sintomas ps-3"></ul>
             </div>
         </div>
+        </div>
+
     </div>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="../../asset/js/historialAutoevaluaciones.js"></script>
     <link rel="stylesheet" href="../../asset/css/historialAutoevaluaciones.css">
 
