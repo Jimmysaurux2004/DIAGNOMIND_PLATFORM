@@ -1,0 +1,127 @@
+:root {
+  --ha-color-primario: #1E3A5F;
+  --ha-color-secundario: #2F4E6F;
+  --ha-color-acento: #5599C9;
+  --ha-color-texto: #212529;
+  --ha-color-fondo: #F4F6F9;
+  --ha-color-borde: #DDE2E8;
+  --ha-color-hover: #E6EDF4;
+}
+
+/* Contenedor general */
+.ha-container {
+  background-color: var(--ha-color-fondo);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.05);
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Título */
+.ha-titulo {
+  font-weight: 600;
+  color: var(--ha-color-primario);
+  border-color: var(--ha-color-acento);
+}
+
+/* Controles */
+.ha-controles label, .ha-controles span {
+  color: var(--ha-color-texto);
+}
+
+.ha-controles select {
+  border-color: var(--ha-color-borde);
+  background-color: #fff;
+}
+
+.ha-controles select:focus {
+  border-color: var(--ha-color-acento);
+  box-shadow: 0 0 0 0.2rem rgba(85, 153, 201, 0.25);
+}
+
+#ha-pagina-anterior:hover,
+#ha-pagina-siguiente:hover {
+  background-color: var(--ha-color-hover);
+}
+
+/* Tabla */
+#ha-tabla-autoevaluaciones th {
+  background-color: var(--ha-color-primario);
+  color: white;
+}
+
+#ha-tabla-autoevaluaciones tbody tr:hover {
+  background-color: var(--ha-color-hover);
+}
+
+/* Botón ver */
+.ha-ver-detalles {
+  background-color: var(--ha-color-acento);
+  border: none;
+}
+
+.ha-ver-detalles:hover {
+  background-color: var(--ha-color-secundario);
+}
+
+/* MODAL PERSONALIZADO */
+.ha-modal .modal-header {
+  background-color: var(--ha-color-primario);
+  color: white;
+  padding: 1rem 1.5rem;
+}
+
+.ha-modal .modal-title {
+  font-weight: 600;
+}
+
+#ha-modal-cerrar {
+  filter: invert(1);
+}
+
+.ha-modal .modal-body {
+  background-color: #f9fbfd;
+  color: var(--ha-color-texto);
+  padding: 2rem;
+  font-size: 0.95rem;
+}
+
+.ha-modal .ha-modal-linea {
+  margin-bottom: 0.75rem;
+}
+
+.ha-modal .ha-modal-label {
+  font-weight: 600;
+  color: var(--ha-color-primario);
+  margin-right: 0.5rem;
+}
+
+.ha-modal .ha-modal-subtitulo {
+  color: var(--ha-color-primario);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.ha-modal .ha-modal-lista {
+  padding-left: 1.2rem;
+  list-style: none;
+}
+
+.ha-modal .ha-modal-lista li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.ha-modal .ha-modal-lista li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--ha-color-primario);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

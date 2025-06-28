@@ -1,0 +1,99 @@
+body {
+  background-color: #F0F4F8;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.card-container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.txt-titulo {
+  font-weight: bold;
+  color: #1F4E79; /* Azul médico */
+}
+
+.card-container p {
+  color: #4CAF50; /* Verde psicológico */
+}
+
+.input-group-text {
+  background-color: #1F4E79;
+  color: #fff;
+}
+
+input.form-control {
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+input.form-control:focus {
+  border-color: #1F4E79;
+  box-shadow: 0 0 0 0.2rem rgba(31, 78, 121, 0.2);
+}
+
+.btn-dark {
+  background-color: #1F4E79;
+  border-color: #1F4E79;
+}
+
+.btn-dark:hover {
+  background-color: #163b5c;
+  border-color: #163b5c;
+}
+
+.nav-pills .nav-link {
+  font-weight: bold;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.nav-link.active {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.nav-link:not(.active) {
+  background-color: #e9ecef;
+  color: #1F4E79;
+}
+
+.btn-outline-secondary {
+  border-color: #ccc;
+  color: #555;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f1f1f1;
+}
+
+.text-danger {
+  font-size: 0.85rem;
+}
+
+/* Fondo opaco con imagen médica/psicológica */
+body::before {
+  content: "";
+  background: url('../img/fondo_login.jpg') no-repeat center center / cover;
+  opacity: 0.15; /* Nivel de opacidad */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Detrás de todo */
+}
+
+/* Tono azulezco encima de la imagen */
+body::after {
+  content: "";
+  background-color: rgba(31, 78, 121, 0.3); /* Azul médico con opacidad */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

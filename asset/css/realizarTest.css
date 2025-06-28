@@ -1,0 +1,157 @@
+.cuestionario-container {
+    width: 100%;
+    min-height: 80vh;
+    background: #F5F9FC;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(30, 58, 95, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+    color: #1E3A5F;
+}
+
+.intro-section {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.titulo-test {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.descripcion-test {
+    font-size: 1.1rem;
+    color: #4A5A6A;
+    margin-bottom: 30px;
+}
+
+.btn-iniciar, .btn-evaluar, .btn-intentar {
+    background-color: #1E3A5F;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 15px 5px 0;
+    transition: background-color 0.3s ease;
+}
+.btn-iniciar:hover,
+.btn-evaluar:hover,
+.btn-intentar:hover {
+    background-color: #2C4A76;
+}
+
+.test-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.test-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#texto-sintoma {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-si, .btn-no {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-si {
+    background-color: #A4D7BE;
+    color: #0F3C2E;
+}
+.btn-no {
+    background-color: #F3B8B5;
+    color: #571F1C;
+}
+.btn-si:hover,
+.btn-si.seleccionado {
+    background-color: #81BFA3;
+}
+.btn-no:hover,
+.btn-no.seleccionado {
+    background-color: #E19391;
+}
+
+.navegacion-test {
+    margin-top: 20px;
+}
+
+.btn-nav {
+    background-color: transparent;
+    border: 2px solid #1E3A5F;
+    color: #1E3A5F;
+    padding: 10px 18px;
+    margin: 0 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-nav:hover {
+    background-color: #1E3A5F;
+    color: white;
+}
+
+.progreso {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.progress-wrapper {
+    height: 10px;
+    background-color: #D0D8E2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #1E3A5F;
+    transition: width 0.4s ease;
+}
+
+.progreso-info {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #3B4E60;
+}
+
+.resultado {
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    width: 250px;
+    font-size: 1rem;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

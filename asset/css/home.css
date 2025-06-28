@@ -1,0 +1,306 @@
+/* ====== DIAGNOMIND: Menú Lateral Médico ====== */
+
+/* Paleta médica: azul, blanco, gris */
+:root {
+    --bg-menu: #1E3A5F; /* Azul profundo profesional */
+    --bg-hover: #2C4A76;
+    --text-color: #FFFFFF;
+    --text-muted: #D0D8E2;
+    --separador-color: #D9E4F0;
+}
+
+/* Contenedor principal del menú */
+.custom-offcanvas {
+    width: 80px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-menu);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    z-index: 1045;
+    padding-top: 20px;
+    overflow-x: hidden;
+    transition: width 0.3s ease-in-out;
+    color: var(--text-color);
+}
+
+/* Menú expandido */
+.custom-offcanvas.fixed,
+.custom-offcanvas:hover {
+    width: 260px;
+}
+
+.custom-offcanvas.minimized {
+    width: 80px !important;
+}
+
+/* Ocultar textos al minimizar */
+@media (min-width: 992px) {
+    .custom-offcanvas:not(.fixed):not(:hover) .menu-text,
+    .custom-offcanvas:not(.fixed):not(:hover) .logo-text {
+        display: none;
+    }
+}
+
+/* Estilo de cabecera del menú */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px; /* separa ícono y texto */
+  background-color: transparent;
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  padding: 15px;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-header i {
+    font-size: 20px;
+    min-width: 24px;
+    text-align: center;
+}
+
+.logo-text {
+    color: var(--text-muted);
+}
+
+/* Botones del menú */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    text-align: left;
+}
+.menu-item:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-color);
+}
+
+/* Íconos y texto del menú */
+.menu-item i {
+    font-size: 18px;
+    min-width: 24px;
+    text-align: center;
+}
+.menu-text {
+    font-size: 15px;
+}
+
+/* Separadores visuales */
+.separador-canva {
+    height: 1px;
+    background-color: var(--separador-color);
+    margin: 12px 16px;
+    border: none;
+}
+
+/* Etiquetas de sección (si se agregaran en el futuro) */
+.text-canva {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-left: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .custom-offcanvas {
+        left: -260px;
+        width: 260px;
+    }
+    .custom-offcanvas.open {
+        left: 0;
+    }
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+
+/* ====== DIAGNOMIND: Header Médico ====== */
+
+/* Fondo del header */
+header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #1E3A5F; /* Línea inferior azul médico */
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+/* Botón de menú ☰ */
+.btn-toggle-menu {
+    background-color: #1E3A5F;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.btn-toggle-menu:hover {
+    background-color: #2C4A76;
+}
+
+/* Dropdown del usuario médico */
+.dropdown {
+    position: relative;
+}
+
+/* Botón con ícono y nombre del médico */
+#userDropdown {
+    background: none;
+    border: none;
+    color: #1E3A5F;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+#userDropdown:hover {
+    background-color: #F0F4F8;
+}
+
+/* Avatar del médico */
+.profile-img {
+    width: 36px;
+    height: 36px;
+    background-color: #D0D8E2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #1E3A5F;
+}
+
+/* Texto al lado del avatar */
+.txt-span-header {
+    font-size: 14px;
+    color: #1E3A5F;
+}
+
+/* Menú desplegable del usuario */
+/* Posicionamiento del menú desplegable perfectamente debajo del botón */
+.user-menu {
+    position: absolute;
+    top: calc(100% + 8px); /* Justo debajo del botón */
+    right: 0;
+    width: 250px;
+    background-color: white;
+    border: 1px solid #D9E4F0;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+}
+
+.user-menu.active {
+    display: block;
+}
+
+/* Contenido del user menu */
+.user-menu .profile-img {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Botón cerrar sesión */
+.btn-cerrarSesion {
+    display: block;
+    background-color: #1E3A5F;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.btn-cerrarSesion:hover {
+    background-color: white;
+    color: #1E3A5F;
+    border: 1px solid #1E3A5F;
+    transform: scale(1.02);
+}
+
+.btn-oms-link {
+    background-color: transparent;
+    color: #1E3A5F;
+    font-weight: 500;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.btn-oms-link:hover {
+    background-color: #F0F4F8;
+    color: #1E3A5F;
+}
+
+/* Responsividad para dispositivos pequeños */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .txt-span-header {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    #userDropdown {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/**/
+
+/* Adaptación del contenido cuando el menú está fijo o expandido */
+.main-content {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* Cuando el menú está expandido (hover o modo fijo) */
+.custom-offcanvas.fixed ~ .main-content,
+.custom-offcanvas:hover ~ .main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+}
+
+/* En pantallas pequeñas, el contenido debe ocupar todo el ancho */
+@media (max-width: 991px) {
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}

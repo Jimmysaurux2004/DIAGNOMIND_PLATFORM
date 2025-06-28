@@ -1,0 +1,35 @@
+services:
+  diagnomind-web:
+    build: .
+    container_name: diagnomind_web
+    ports:
+      - "9090:80"  # Puerto 80 dentro del contenedor, 9090 en tu PC
+    volumes:
+      - .:/var/www/html
+      - ./logs:/var/www/html/logs
+    env_file:
+      - .env
+    depends_on:
+      - diagnomind-db
+
+  diagnomind-db:
+    image: mysql:8.0
+    container_name: diagnomind_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    volumes:
+      - diagnomind-dbdata:/var/lib/mysql
+
+  diagnomind-adminer:
+    image: adminer
+    container_name: diagnomind_adminer
+    restart: always
+    ports:
+      - "9091:8080"  # Adminer en localhost:9091
+
+volumes:
+  diagnomind-dbdata:
