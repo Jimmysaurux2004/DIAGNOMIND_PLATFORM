@@ -25,19 +25,27 @@ class formRealizarTest {
                         <span id="resumen-respuestas"></span>
                     </div>
                 </div>
-
+                
                 <div class="test-card" id="card-pregunta">
                     <p id="texto-sintoma"></p>
                     <div class="opciones">
-                        <button class="btn-si" id="btn-si" onclick="responder('s')"><i class="fas fa-check-circle"></i> Sí</button>
-                        <button class="btn-no" id="btn-no" onclick="responder('n')"><i class="fas fa-times-circle"></i> No</button>
+                        <button class="btn-si" id="btn-si" onclick="responder('s')">
+                        <i class="fas fa-check-circle"></i> Sí
+                        </button>
+                        <button class="btn-no" id="btn-no" onclick="responder('n')">
+                        <i class="fas fa-times-circle"></i> No
+                        </button>
                     </div>
                     <div id="mensaje-alerta" style="color: #D9534F; margin-top: 10px; font-weight: 500;"></div>
-                </div>
+                    <div class="navegacion-test">
+                        <button class="btn-nav flecha-izquierda" onclick="retrocederPregunta()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
 
-                <div class="navegacion-test">
-                    <button class="btn-nav" onclick="retrocederPregunta()">Anterior</button>
-                    <button class="btn-nav" onclick="avanzarPregunta()">Siguiente</button>
+                        <button class="btn-nav flecha-derecha" onclick="avanzarPregunta()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="evaluacion-final" id="evaluacion-final" style="display:none;">
@@ -55,6 +63,7 @@ class formRealizarTest {
         <!-- Tu archivo JavaScript personalizado -->
         <script src="../../asset/js/realizarTest.js"></script>
         <link rel="stylesheet" href="../../asset/css/realizarTest.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <?php
         return ob_get_clean();
     }

@@ -1,132 +1,228 @@
 .cuestionario-container {
     width: 100%;
-    min-height: 80vh;
+    min-height: 100vh;
     background: #F5F9FC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(30, 58, 95, 0.2);
     font-family: 'Segoe UI', sans-serif;
     color: #1E3A5F;
 }
 
-.intro-section {
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-}
-
-.titulo-test {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.descripcion-test {
-    font-size: 1.1rem;
-    color: #4A5A6A;
-    margin-bottom: 30px;
-}
-
-.btn-iniciar, .btn-evaluar, .btn-intentar {
-    background-color: #1E3A5F;
-    color: white;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 15px 5px 0;
-    transition: background-color 0.3s ease;
-}
-.btn-iniciar:hover,
-.btn-evaluar:hover,
-.btn-intentar:hover {
-    background-color: #2C4A76;
-}
-
 .test-section {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .test-card {
     background-color: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 800px;
     text-align: center;
+    position: relative;
+    animation: fadeIn 0.6s ease;
 }
 
 #texto-sintoma {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: bold;
 }
 
 .opciones {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
+    margin-bottom: 30px;
 }
 
 .btn-si, .btn-no {
-    padding: 12px 20px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
+    padding: 20px 36px;
+    border-radius: 12px;
+    border: 4px solid transparent;
+    font-size: 1.5rem;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
 .btn-si {
     background-color: #A4D7BE;
     color: #0F3C2E;
 }
+
 .btn-no {
     background-color: #F3B8B5;
     color: #571F1C;
 }
+
 .btn-si:hover,
 .btn-si.seleccionado {
     background-color: #81BFA3;
+    border-color: #0F3C2E;
+    color: #0F3C2E;
 }
+
 .btn-no:hover,
 .btn-no.seleccionado {
     background-color: #E19391;
+    border-color: #571F1C;
+    color: #571F1C;
+}
+
+/*.navegacion-test {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}*/
+
+.btn-nav {
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    color: #1E3A5F;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn-nav:hover {
+    transform: scale(1.2);
+}
+
+.evaluacion-final {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.btn-evaluar, .btn-intentar {
+    background-color: #1E3A5F;
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-evaluar:hover,
+.btn-intentar:hover {
+    background-color: #2C4A76;
+}
+
+.resultado {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 14px;
+    width: 300px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Centrado vertical de intro también */
+.intro-section {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo-test {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.descripcion-test {
+    font-size: 1.3rem;
+    color: #4A5A6A;
+    margin-bottom: 40px;
+}
+
+.btn-iniciar {
+    background-color: #1E3A5F;
+    color: white;
+    padding: 16px 32px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-iniciar:hover {
+    background-color: #2C4A76;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .navegacion-test {
-    margin-top: 20px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-50%);
+    padding: 0 30px;
 }
 
 .btn-nav {
-    background-color: transparent;
-    border: 2px solid #1E3A5F;
-    color: #1E3A5F;
-    padding: 10px 18px;
-    margin: 0 10px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.btn-nav:hover {
     background-color: #1E3A5F;
     color: white;
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+.btn-nav:hover {
+    background-color: #2C4A76;
+}
+
+.btn-nav i {
+    pointer-events: none;
 }
 
 .progreso {
     width: 100%;
     max-width: 600px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .progress-wrapper {
-    height: 10px;
+    height: 14px;
     background-color: #D0D8E2;
     border-radius: 10px;
     overflow: hidden;
 }
+
 .progress-bar {
     height: 100%;
     width: 0%;
@@ -136,22 +232,82 @@
 
 .progreso-info {
     text-align: center;
-    margin-top: 8px;
-    font-size: 0.9rem;
+    margin-top: 10px;
+    font-size: 1.1rem;
     color: #3B4E60;
+    font-weight: 500;
 }
 
-.resultado {
-    margin-left: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 10px;
-    width: 250px;
-    font-size: 1rem;
+.btn-si.seleccionado {
+    background-color: #5EAF8B;
+    border: 4px solid #0F3C2E;
+    color: black;
+    font-weight: bold;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.btn-no.seleccionado {
+    background-color: #CD6A68;
+    border: 4px solid #571F1C;
+    color: black;
+    font-weight: bold;
+}
+
+.btn-si, .btn-no {
+    padding: 20px 36px;
+    border-radius: 12px;
+    border: 4px solid transparent;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;         /* ← Abarca todo el espacio posible */
+    max-width: 220px;    /* ← Opcional: define un máximo */
+    user-select: none;   /* ← Mejora UX en móviles */
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.navegacion-test {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+    position: relative; /* ✅ Evita que se monte encima */
+    z-index: 1;
+}
+.test-card {
+    position: relative;
+    z-index: 2;
+}
+
+.navegacion-test {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-60%); /* Antes: -50%, ahora un poco más arriba */
+    padding: 0 30px;
+    pointer-events: none; /* Importante: evita que interfiera con clics si está fuera de botones */
+}
+
+.btn-nav {
+    pointer-events: auto; /* Asegura que sí se puedan hacer clic */
 }
